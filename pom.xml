@@ -15,6 +15,12 @@
             <organizationUrl>http://www.inf.unideb.hu/</organizationUrl>
         </developer>
     </developers>
+    <distributionManagement>
+        <site>
+            <id>shrek</id>
+            <url>scp://tapet@shrek.unideb.hu:2222/home/tapet/public_html/${project.artifactId}</url>
+        </site>
+    </distributionManagement>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
@@ -58,6 +64,19 @@
     </dependencies>
     <build>
         <plugins>
+ <!-- Shrekhez pluginok -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.11.0</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.wagon</groupId>
+                        <artifactId>wagon-ssh</artifactId>
+                        <version>3.5.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
